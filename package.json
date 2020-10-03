@@ -2,9 +2,10 @@
   "name": "OAuth",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,8 @@
   },
   "homepage": "https://github.com/shirantha97/OAuth#readme",
   "dependencies": {
+    "bootstrap": "^4.5.2",
+    "ejs": "^3.1.5",
     "express": "^4.17.1",
     "googleapis": "^60.0.1",
     "nodemon": "^2.0.4"
