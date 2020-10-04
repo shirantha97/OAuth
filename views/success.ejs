@@ -1,16 +1,66 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Node Authentication</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+    />
     <style>
-        body        { padding-top:80px; }
+      body {
+        padding-top: 80px;
+        word-wrap: break-word;
+      }
     </style>
-</head>
-<body>
-<div class="container">
+  </head>
 
-</div>
-</body>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div style="float: right">
+          <div
+            style="display: flex; flex-direction: row; flex-wrap: wrap-reverse"
+          >
+            <h1><%= name %></h1>
+            <!-- <img src="<%=pic%>" width="50" height="50" alt="" /> -->
+          </div>
+          <div style="float: right">
+            <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin: 10px;">
+        <div class="col-sm-12 text-center">
+          <div class="well">
+            <h3 class="text-danger">
+              <span class="fa fa-google-plus"></span> Upload File to Google
+              Drive
+            </h3>
+
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <input
+                  type="file"
+                  class="form-control"
+                  name="file"
+                  required
+                  id=""
+                />
+              </div>
+              <div class="form-group">
+                <button class="btn btn-block btn-danger">Upload File</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </html>
