@@ -56,11 +56,27 @@
                 <button class="btn btn-block btn-danger">Upload File</button>
               </div>
             </form>
+            <% if (success) { %>
+                <div class="alert alert-success alert-dismissible">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close"
+                    >×</a
+                  >
+                  <strong>Success!</strong> Your Image File is Uploaded.
+                </div>
+            <%}%>
           </div>
         </div>
       </div>
     </div>
   </body>
+  <script type="text/javascript">
+    if(success){
+        showAlert = function(err) {
+        alert('succes: ' + err);
+    }
+    }
+    
+    </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </html>

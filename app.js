@@ -1,5 +1,5 @@
 const express = require("express");
-
+const fileStream = require('fs')
 const app = express();
 const multer = require("multer");
 const oAuthData = require("./credentials.json");
@@ -16,6 +16,8 @@ const oAuthclient = new google.auth.OAuth2(
 );
 
 let authed = false;
+
+app.locals.success = false
 
 const Scopes =
   "https://www.googleapis.com/auth/drive.file  https://www.googleapis.com/auth/userinfo.profile";
@@ -73,7 +75,34 @@ app.get("/google/callback", (req, res) => {
   }
 });
 
-app.post("/upload", (req, res) => {});
+app.post("/upload", (req, res) => {
+
+    upload(req,res, function(err){
+        if(err) throw err
+        console.log(req.file.path)
+
+        const drive = google.drive({ version: 'v3', auth: oAuthclient })
+        const filemetaData = {name:req.file.filename} 
+        const mimetype = {
+            mimetype: req.file.mimetype,
+            body: fileStream.createReadStream(req.file.path)
+        }
+        
+        drive.files.create({
+            resource: filemetaData,
+            media: mimetype,
+            fields: "id",
+    
+        }, (err, file) => {
+            if(err) throw err
+            fileStream.unlinkSync(req.file.path)
+            res.render("success")
+            app.locals.success = true
+        }) 
+    })
+
+
+});
 
 app.listen(5000, () => {
   console.log("app runs on port 5000");
